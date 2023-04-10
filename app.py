@@ -34,7 +34,7 @@ with st.sidebar:
 
 
 def display_student_data(year):
-    students_df = pd.read_csv("prj/학생수.csv", index_col=0)
+    students_df = pd.read_csv("학생수.csv", index_col=0)
     area_number = len(students_df['지역'].unique()[1:])
     not_all_area = students_df[students_df['지역'] != '전국']
     sorted_area = not_all_area[['지역','학생(명)']]
@@ -83,7 +83,7 @@ def display_student_data(year):
     st.plotly_chart(fig, use_container_width=True)
 
 def display_closed_school_data(year):
-    close_school_df = pd.read_csv("prj/학교.csv", index_col=0)
+    close_school_df = pd.read_csv("학교.csv", index_col=0)
     area_number = len(close_school_df['지역'].unique()[1:])
     not_all_area = close_school_df[close_school_df['지역'] != '전국']
     sorted_area = not_all_area[['지역','당년(개)']]
@@ -137,7 +137,7 @@ def display_closed_school_data(year):
     st.plotly_chart(fig, use_container_width=True)
     
 def draw_pie_year(year):
-    close_school_df = pd.read_csv("prj/학교.csv", index_col=0)
+    close_school_df = pd.read_csv("학교.csv", index_col=0)
     sorted_school_df = close_school_df.rename(columns={'당년(개)': '값'})
     sorted_school_df = sorted_school_df[sorted_school_df['지역'] != '전국']
 
@@ -167,7 +167,7 @@ def draw_pie_year(year):
         st.plotly_chart(fig, theme=None)
 
 def statistics_year(year):
-    marriage_df = pd.read_csv("prj/출생,결혼.csv", index_col=0)
+    marriage_df = pd.read_csv("출생,결혼.csv", index_col=0)
     marriage_df.rename_axis("연도", axis='index', inplace=True)
     marriage_df = marriage_df.reset_index()
     df_month = marriage_df.copy()
